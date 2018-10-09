@@ -2,9 +2,9 @@
 # The Taxi-cab Problem
 An interactive explanation to the taxicab problem
 
-**Play It Here:** http://galgreen.com/TaxiCabProblem/
+**Play it here:** http://galgreen.com/TaxiCabProblem/
 
-# Making changes
+# Making Changes
 Remember to:
 * Compile the SCSS files from \scss\style.scss into \css\style.css
 * Compile the TypeScript files from \src\ts\*.ts into \js\*.js
