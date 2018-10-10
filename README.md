@@ -7,7 +7,7 @@ An interactive explanation to the taxicab problem
 # Making Changes
 Remember to:
 * Compile the SCSS files from \scss\style.scss into \css\style.css
-* Compile the TypeScript files from \src\ts\\*.ts into \js\\*.js
+* Compile the TypeScript files from \src\ts\\\*.ts into \js\\\*.js
 
 # License
 MIT License. [TLDR from tldrlegal.com](https://tldrlegal.com/license/mit-license):
