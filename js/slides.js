@@ -14,9 +14,9 @@ var Taxidentville;
         ;
         hide() {
             this.slide.classList.remove("active");
-            setTimeout(() => {
-                this.slide.classList.add("collapsed");
-            }, 400 + 10);
+        }
+        collapse() {
+            this.slide.classList.add("collapsed");
         }
         finishSlide() {
             this.slideManager.gotoNextSlide();
@@ -70,6 +70,9 @@ var Taxidentville;
         ;
         leave() {
             super.hide();
+            setTimeout(() => {
+                super.collapse();
+            }, 400 + 10);
         }
     }
     Taxidentville.Slide1 = Slide1;
@@ -95,6 +98,7 @@ var Taxidentville;
         leave() {
             super.hide();
             setTimeout(() => {
+                super.collapse();
                 this.cabSliderController.dispose();
                 this.cabSliderController = null;
             }, 400 + 10);
@@ -195,6 +199,7 @@ var Taxidentville;
         leave() {
             super.hide();
             setTimeout(() => {
+                super.collapse();
                 this.cabSliderController.dispose();
                 this.cabSliderController = null;
             }, 400 + 10);
@@ -218,6 +223,7 @@ var Taxidentville;
         leave() {
             super.hide();
             setTimeout(() => {
+                super.collapse();
                 this.cabSliderController.dispose();
                 this.cabSliderController = null;
                 this.witnessSliderController.dispose();
@@ -262,6 +268,7 @@ var Taxidentville;
         leave() {
             super.hide();
             setTimeout(() => {
+                super.collapse();
                 this.cabSliderController.dispose();
                 this.cabSliderController = null;
                 this.witnessSliderController.dispose();
@@ -369,6 +376,7 @@ var Taxidentville;
         leave() {
             super.hide();
             setTimeout(() => {
+                super.collapse();
                 this.cabSliderController.dispose();
                 this.cabSliderController = null;
                 this.witnessSliderController.dispose();
@@ -388,6 +396,9 @@ var Taxidentville;
         }
         leave() {
             super.hide();
+            setTimeout(() => {
+                super.collapse();
+            }, 400 + 10);
         }
     }
     Taxidentville.Credits = Credits;

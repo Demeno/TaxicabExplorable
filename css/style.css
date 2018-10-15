@@ -38,6 +38,25 @@ main {
   position: relative;
   transition: background-color .4s; }
 
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #113A27; }
+  footer nav {
+    display: flex;
+    width: 620px;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto; }
+    footer nav button {
+      width: 44px; }
+      footer nav button.current {
+        background: #E6FFF3; }
+
 h1 {
   font-size: 28px;
   font-weight: normal;

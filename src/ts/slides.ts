@@ -22,20 +22,20 @@ namespace Taxidentville {
             }, 10);
         };
         hide() {
-            this.slide.classList.remove("active");
-            setTimeout(() => {
-                this.slide.classList.add("collapsed");
-            }, 400 + 10);
+            this.slide.classList.remove("active");            
         }
-
+        collapse() {
+            this.slide.classList.add("collapsed");
+        }
+        
         finishSlide() {
             this.slideManager.gotoNextSlide();
         }
     }
 
     export class Slide1 extends Slide {        
-        percentButtons:HTMLElement;
-        continueButton:HTMLButtonElement;
+        percentButtons: HTMLElement;
+        continueButton: HTMLButtonElement;
         slide1Text1: HTMLElement;        
         slide1Text2: HTMLElement;
         slide1Text2DynamicParagaraph: HTMLParagraphElement;
@@ -90,6 +90,9 @@ namespace Taxidentville {
         };
         leave() {
             super.hide();
+            setTimeout(() => {
+                super.collapse();
+            }, 400 + 10);
         }
     }    
 
@@ -120,6 +123,7 @@ namespace Taxidentville {
         leave() {            
             super.hide();
             setTimeout(() => {
+                super.collapse();
                 this.cabSliderController.dispose();
                 this.cabSliderController = null;
             }, 400 + 10);
@@ -241,6 +245,7 @@ namespace Taxidentville {
         leave() {            
             super.hide();
             setTimeout(() => {
+                super.collapse();
                 this.cabSliderController.dispose();
                 this.cabSliderController = null;
             }, 400 + 10);
@@ -271,6 +276,7 @@ namespace Taxidentville {
         leave() {            
             super.hide();
             setTimeout(() => {
+                super.collapse();
                 this.cabSliderController.dispose();
                 this.cabSliderController = null;
 
@@ -326,6 +332,7 @@ namespace Taxidentville {
         leave() {            
             super.hide();
             setTimeout(() => {
+                super.collapse();
                 this.cabSliderController.dispose();
                 this.cabSliderController = null;
 
@@ -459,6 +466,7 @@ namespace Taxidentville {
         leave() {            
             super.hide();
             setTimeout(() => {
+                super.collapse();
                 this.cabSliderController.dispose();
                 this.cabSliderController = null;
 
@@ -481,6 +489,9 @@ namespace Taxidentville {
         }    
         leave() {            
             super.hide();
-        }    
+            setTimeout(() => {
+                super.collapse();
+            }, 400 + 10);
+        }
     }
 }
