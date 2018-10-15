@@ -60,6 +60,13 @@ namespace Taxidentville {
                 this.finishSlide();
             });
         }
+
+        goToState1() {
+            this.percentButtons.classList.remove("collapsed");
+            this.continueButton.classList.add("collapsed");
+            this.slide1Text1.classList.remove("collapsed");
+            this.slide1Text2.classList.add("collapsed");
+        }
         
         goToState2(selectedPercent: number) {
             this.updateDynamicParagraph(selectedPercent);
@@ -92,6 +99,7 @@ namespace Taxidentville {
             super.hide();
             setTimeout(() => {
                 super.collapse();
+                this.goToState1();
             }, 400 + 10);
         }
     }    
@@ -126,6 +134,7 @@ namespace Taxidentville {
                 super.collapse();
                 this.cabSliderController.dispose();
                 this.cabSliderController = null;
+                document.getElementById("slide2-bottom-part").classList.add("collapsed");
             }, 400 + 10);
         }    
     }

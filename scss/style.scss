@@ -66,6 +66,10 @@ footer {
 
         button {
             width: 44px;
+            
+            &:hover {
+                background: #E6FFF3;
+            }
 
             &.current {
                 background: #E6FFF3;

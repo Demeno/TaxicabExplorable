@@ -54,6 +54,8 @@ footer {
     margin: 0 auto; }
     footer nav button {
       width: 44px; }
+      footer nav button:hover {
+        background: #E6FFF3; }
       footer nav button.current {
         background: #E6FFF3; }
 

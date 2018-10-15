@@ -41,6 +41,12 @@ var Taxidentville;
                 this.finishSlide();
             });
         }
+        goToState1() {
+            this.percentButtons.classList.remove("collapsed");
+            this.continueButton.classList.add("collapsed");
+            this.slide1Text1.classList.remove("collapsed");
+            this.slide1Text2.classList.add("collapsed");
+        }
         goToState2(selectedPercent) {
             this.updateDynamicParagraph(selectedPercent);
             this.percentButtons.classList.add("collapsed");
@@ -72,6 +78,7 @@ var Taxidentville;
             super.hide();
             setTimeout(() => {
                 super.collapse();
+                this.goToState1();
             }, 400 + 10);
         }
     }
@@ -101,6 +108,7 @@ var Taxidentville;
                 super.collapse();
                 this.cabSliderController.dispose();
                 this.cabSliderController = null;
+                document.getElementById("slide2-bottom-part").classList.add("collapsed");
             }, 400 + 10);
         }
     }
