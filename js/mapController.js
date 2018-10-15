@@ -112,7 +112,7 @@ var Taxidentville;
                 this.randomizeCabPositions();
             }, 200);
         }
-        stopRandomizingCabPositions() {
+        finishRandomizingCabPositions() {
             clearInterval(this.cabPositionRandomizerInterval);
             let cabThatHadAccident = this.cabs.find(x => x.positionIndex == this.accidentPositionIndex);
             if (this.onAccident) {
@@ -125,6 +125,20 @@ var Taxidentville;
                 this.dequeueSimulation();
             }
         }
+        reset() {
+            clearInterval(this.accidentRandomizerInterval);
+            clearInterval(this.cabPositionRandomizerInterval);
+            clearTimeout(this.simulateFullRandomizingTimeout);
+            this.simulationQueue = [];
+            if (this.accidentSvg) {
+                this.mapContainer.removeChild(this.accidentSvg);
+            }
+            if (this.cabs) {
+                for (let cab of this.cabs) {
+                    this.mapContainer.removeChild(cab.svgElement);
+                }
+            }
+        }
         dequeueSimulation() {
             this.simulateFull(this.simulationQueue.shift());
         }
@@ -132,9 +146,9 @@ var Taxidentville;
             this.isSimulating = true;
             this.startRandomizingAccident();
             this.startRandomizingCabPositions();
-            setTimeout(() => {
+            this.simulateFullRandomizingTimeout = setTimeout(() => {
                 this.stopRandomizingAccident();
-                this.stopRandomizingCabPositions();
+                this.finishRandomizingCabPositions();
                 if (this.simulationQueue.length > 0) {
                     this.dequeueSimulation();
                 }

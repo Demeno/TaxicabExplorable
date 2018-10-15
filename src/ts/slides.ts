@@ -140,8 +140,8 @@ namespace Taxidentville {
     }
 
     export class Slide3 extends Slide {        
-        cabSliderController:CabSliderController;
-        mapController:MapController;
+        cabSliderController: CabSliderController;
+        mapController: MapController;
 
         simulatedAccidentsCount: number;
         simulatedBlueAccidentsCount: number;
@@ -171,7 +171,7 @@ namespace Taxidentville {
                 placeCabsButton.classList.remove("disabled");
             });
             placeCabsButton.addEventListener("click", (ev) => {
-                this.mapController.stopRandomizingCabPositions();
+                this.mapController.finishRandomizingCabPositions();
                 document.getElementById("slide3-phase2").classList.add("collapsed");
                 document.getElementById("slide3-phase3").classList.remove("collapsed");
             });
@@ -257,6 +257,29 @@ namespace Taxidentville {
                 super.collapse();
                 this.cabSliderController.dispose();
                 this.cabSliderController = null;
+                this.mapController.reset();
+                this.mapController = null;
+
+                // reset possible HTML changes to starting state
+                const shuffleAccidentButton = <HTMLButtonElement>document.getElementById("slide3-shuffle-accident-button");
+                const placeAccidentButton = <HTMLButtonElement>document.getElementById("slide3-place-accident-button");
+                shuffleAccidentButton.classList.remove("disabled");
+                placeAccidentButton.classList.add("disabled");
+                document.getElementById("slide3-phase1").classList.remove("collapsed");
+                document.getElementById("slide3-phase2").classList.add("collapsed");
+                const shuffleCabsButton = <HTMLButtonElement>document.getElementById("slide3-shuffle-cabs-button");
+                const placeCabsButton = <HTMLButtonElement>document.getElementById("slide3-place-cabs-button");
+                shuffleCabsButton.classList.remove("disabled");
+                placeCabsButton.classList.add("disabled");
+                document.getElementById("slide3-phase3").classList.add("collapsed");
+                const hundredTimesButton = document.getElementById("slide3-100-times-button");
+                hundredTimesButton.classList.remove("disabled");
+                document.getElementById("slide3-phase3-content_a").classList.remove("collapsed");
+                document.getElementById("slide3-phase3-content_b").classList.add("collapsed");
+                document.getElementById("slide3-phase3-button_a").classList.remove("collapsed");
+                document.getElementById("slide3-phase3-button_b").classList.add("collapsed");
+                const cabColorSpanElement = document.getElementById("slide3-phase3-cab-color");
+                cabColorSpanElement.innerText = "";
             }, 400 + 10);
         }    
     }
@@ -466,7 +489,7 @@ namespace Taxidentville {
                 this.mapController.initCabs(this.cabSliderController.value);
                 this.mapController.setCabColorsByValue(startCabSliderValue);            
                 this.mapController.startRandomizingCabPositions();
-                this.mapController.stopRandomizingCabPositions();                
+                this.mapController.finishRandomizingCabPositions();                
                 this.mapController.onAccident = (wasAccidentBlue) => this.onAccident(wasAccidentBlue);
             }, 100);
 

@@ -38,6 +38,7 @@ namespace Taxidentville {
 
         accidentRandomizerInterval: number;
         cabPositionRandomizerInterval: number;
+        simulateFullRandomizingTimeout: number;
 
         cabs: Cab[];
 
@@ -151,7 +152,7 @@ namespace Taxidentville {
             }, 200);
         }
 
-        public stopRandomizingCabPositions() {
+        public finishRandomizingCabPositions() {
             clearInterval(this.cabPositionRandomizerInterval);
             let cabThatHadAccident = this.cabs.find(x => x.positionIndex == this.accidentPositionIndex);            
             if (this.onAccident) {
@@ -166,6 +167,22 @@ namespace Taxidentville {
             }
         }
 
+        public reset() {
+            clearInterval(this.accidentRandomizerInterval);
+            clearInterval(this.cabPositionRandomizerInterval);
+            clearTimeout(this.simulateFullRandomizingTimeout);
+            this.simulationQueue = [];
+
+            if (this.accidentSvg) {
+                this.mapContainer.removeChild(this.accidentSvg);
+            }
+            if (this.cabs) {
+                for (let cab of this.cabs) {
+                    this.mapContainer.removeChild(cab.svgElement);
+                }
+            }
+        }
+
         private dequeueSimulation() {
             this.simulateFull(this.simulationQueue.shift());
         }
@@ -175,9 +192,9 @@ namespace Taxidentville {
 
             this.startRandomizingAccident();
             this.startRandomizingCabPositions();
-            setTimeout(() => {
-                this.stopRandomizingAccident();                
-                this.stopRandomizingCabPositions();
+            this.simulateFullRandomizingTimeout = setTimeout(() => {
+                this.stopRandomizingAccident();
+                this.finishRandomizingCabPositions();
 
                 if (this.simulationQueue.length > 0) {
                     this.dequeueSimulation();
