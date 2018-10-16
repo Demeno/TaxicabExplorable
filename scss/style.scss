@@ -38,6 +38,14 @@ body {
     transition: background-color .4s;
     min-height: 540px;
     min-width: 960px;
+
+    &.credits {
+        background: #113A27;
+
+        main {
+            background: transparent;
+        }
+    }
 }
 
 main {

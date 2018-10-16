@@ -29,6 +29,10 @@ body {
   transition: background-color .4s;
   min-height: 540px;
   min-width: 960px; }
+  body.credits {
+    background: #113A27; }
+    body.credits main {
+      background: transparent; }
 
 main {
   width: 960px;

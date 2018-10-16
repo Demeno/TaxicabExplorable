@@ -370,6 +370,12 @@ namespace Taxidentville {
 
                 this.witnessSliderController.dispose();
                 this.witnessSliderController = null;
+
+                // reset possible HTML changes to starting state                
+                document.getElementById("slide5-phase1").classList.remove("collapsed");
+                document.getElementById("slide5-phase2").classList.add("collapsed");
+                document.getElementById("slide5-phase3").classList.add("collapsed");
+                document.getElementById("slide5-phase4").classList.add("collapsed");
             }, 400 + 10);
         }    
     }
@@ -382,6 +388,8 @@ namespace Taxidentville {
         simulatedAccidentsCount: number;
         simulatedAccidentsWhereWitnessSawBlue: number;
         simulatedAccidentsWhereWitnessSawBlueAndWasCorrect: number;
+
+        simulate100Timeout: number;
 
         constructor(slideManager: SlideManager) {
             super("slide6", slideManager);            
@@ -406,7 +414,11 @@ namespace Taxidentville {
                 this.mapController.enqueueSimulation(1 + i * acceleration);
             }
 
-            setTimeout(() => {
+            if (this.simulate100Timeout) {
+                clearTimeout(this.simulate100Timeout);
+            }
+
+            this.simulate100Timeout = setTimeout(() => {
                 document.getElementById("slide6-continue-button").classList.remove("collapsed");
             }, 3000);
         }
@@ -504,22 +516,32 @@ namespace Taxidentville {
 
                 this.witnessSliderController.dispose();
                 this.witnessSliderController = null;
+
+                this.mapController.reset();
+
+                clearTimeout(this.simulate100Timeout);
+                
+                document.getElementById("slide6-continue-button").classList.add("collapsed");
             }, 400 + 10);
         }    
     }
 
-    export class Credits extends Slide {                
+    export class Credits extends Slide {
+        bodyElement: HTMLElement;
+
         constructor(slideManager: SlideManager) {
             super("credits", slideManager);
+
+            this.bodyElement = document.getElementsByTagName("body")[0];
         }
 
         enter() {
-            document.getElementsByTagName("body")[0].style.background = "#113A27";
-            (<HTMLMainElement>document.getElementsByTagName("main")[0]).style.background = "transparent";
+            this.bodyElement.classList.add("credits");
 
             super.show();
         }    
         leave() {            
+            this.bodyElement.classList.remove("credits");
             super.hide();
             setTimeout(() => {
                 super.collapse();
