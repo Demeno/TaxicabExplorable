@@ -27,12 +27,17 @@ body {
   flex-direction: column;
   color: #113A27;
   transition: background-color .4s;
-  min-height: 540px;
+  min-height: 600px;
   min-width: 960px; }
   body.credits {
     background: #113A27; }
     body.credits main {
       background: transparent; }
+
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+  flex: 1; }
 
 main {
   width: 960px;
@@ -43,10 +48,10 @@ main {
   transition: background-color .4s; }
 
 footer {
-  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
+  margin-top: auto;
   height: 60px;
   background: #113A27; }
   footer nav {
@@ -57,7 +62,12 @@ footer {
     align-items: center;
     margin: 0 auto; }
     footer nav button {
-      width: 44px; }
+      min-width: 64px;
+      height: 36px;
+      font-weight: bold;
+      line-height: 26px;
+      background: #4AFFAD;
+      border-radius: 2px; }
       footer nav button:hover {
         background: #E6FFF3; }
       footer nav button.current {

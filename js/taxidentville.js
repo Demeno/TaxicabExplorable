@@ -21,7 +21,6 @@ var Taxidentville;
             this.navButtons = [];
             for (let slideKey in slides) {
                 let button = document.createElement("button");
-                button.className = "basic";
                 button.textContent = String(Number(slideKey) + 1);
                 navButtonsContainer.appendChild(button);
                 this.navButtons.push(button);

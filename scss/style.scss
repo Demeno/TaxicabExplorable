@@ -36,7 +36,7 @@ body {
     color: #113A27;
 
     transition: background-color .4s;
-    min-height: 540px;
+    min-height: 600px;
     min-width: 960px;
 
     &.credits {
@@ -46,6 +46,12 @@ body {
             background: transparent;
         }
     }
+}
+
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    flex: 1;
 }
 
 main {
@@ -59,9 +65,9 @@ main {
 }
 
 footer {
-    position: absolute;
     bottom: 0;
     left: 0; right: 0;
+    margin-top: auto;
     height: 60px;
     background: #113A27;
 
@@ -73,7 +79,12 @@ footer {
         margin: 0 auto;
 
         button {
-            width: 44px;
+            min-width: 64px;
+            height: 36px;
+            font-weight: bold;
+            line-height: 26px;
+            background: #4AFFAD;
+            border-radius: 2px;
             
             &:hover {
                 background: #E6FFF3;

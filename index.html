@@ -15,367 +15,369 @@
         <link href="https://fonts.googleapis.com/css?family=Istok+Web:400,700" rel="stylesheet">
         <link rel="stylesheet" type="text/css" media="all" href="css/style.css" />
         <link rel="preload" href="svg/sprite.svg" as="image" />
+        <meta name="viewport" content="height=600, initial-scale=0.8"> 
         
         <meta property="og:title"              content="The Taxicab Problem - an explorable by Gal Green" />
         <meta property="og:description"        content="An unintuitive probability problem explained with almost no math" />
         <meta property="og:image"              content="http://www.galgreen.com/TaxiCabProblem/images/facebookImage.jpg" />
     </head>
-    <body>        
-        <main>
-            <section id="slide1" class="slide">
-                <div class="top-part">
-                    <section class="text-container">
-                        <section id="slide1-text1">
-                            <h1>The Taxi-cab Problem</h1>
-                            <p>
-                                A cab was involved in a hit and run accident at night. Two cab companies, the Green and the Blue, operate in the city. 90% of the cabs in the city are Green and 10% are Blue.
-                            </p>
-                            <p>
-                                A witness identified the cab as Blue. The court tested the reliability of the witness under the same circumstances that existed on the night of the accident and concluded that the witness correctly identified each one of the two colors 80% of the time and failed 20% of the time.                            
-                            </p>
-                            <p>
-                                What is the probability that the cab involved in the accident was Blue rather than Green knowing that this witness identified it as Blue?</p>
-                            </p>
-                        </section>
-                        <section id="slide1-text2" class="collapsed">
-                            <h1>The Taxi-cab Problem</h1>
-                            <p id="slide1Text2DynamicParagaraph">
-                                80% - Congratulations, like most people, including me, you’ve been fooled by your intuitions and got this completely wrong. Even though it doesn’t feel like it, what the witness saw is only a part of the picture.                                </p>
-                            <p>
-                                Us humans are very bad at looking at the big picture of things.
-                                That’s why most people, including me, think 80% is the right answer when they first read about this problem, while the actual answer is 30% (we’ll see why soon).
-                            </p>
-                            <p>
-                                But why are we even talking about this?<br/>
-                                This problem shows how people tend to ignore very important information when they look at the world, and when we get the world wrong, we make bad decisions.
-                            </p>
-                        </section>
-                    </section>
-                    <section class="illustration">
-                        <img src="images/illustration.png" />
-                    </section>
-                </div>
-                <div class="bottom-part">
-                    <section id="percent-buttons">
-                        <button id="percent0">0%</button>
-                        <button id="percent10">10%</button>
-                        <button id="percent20">20%</button>
-                        <button id="percent30">30%</button>
-                        <button id="percent40">40%</button>
-                        <button id="percent50">50%</button>
-                        <button id="percent60">60%</button>
-                        <button id="percent70">70%</button>
-                        <button id="percent80">80%</button>
-                        <button id="percent90">90%</button>
-                        <button id="percent100">100%</button>
-                    </section>
-                    <button id="slide1-continue-button" class="cta collapsed">so, why ~30%?</button>
-                </div>
-            </section>
-            <section id="slide2" class="slide collapsed">
-                <section class="centered-text">
-                    <p>
-                        Let’s pretend (for a moment) there was no witness. (sounds sketchy I know)
-                    </p>
-                    <p>
-                        The original problem had a city with 90% green cabs and 10% blue cabs.<br>
-                        To make it simpler let's look at a small town with just 9 green cabs and 1 blue cab.
-                    </p>
-                    <p>
-                        But 9 and 1 is boring, go ahead and move the line to, I don’t know, 6 blue and 4 green cabs.
-                    </p>
-                </section>
-                <section id="slide2-cabs-slider"></section>
-                <section id="slide2-bottom-part" class="bottom-part collapsed">
-                    <p>
-                        that’s much nicer! now we can
-                    </p>
-                    <button id="slide2-continue-button" class="cta">simulate an accident</button>
-                </section>
-            </section>
-            <section id="slide3" class="slide collapsed">
-                <section id="slide3-cabs-slider"></section>
-                <div class="main-explanation">
-                    <section class="explanation-text">
-                        <section id="slide3-phase1">
-                            <div class="top-part">
-                                <p>
-                                    Welcome to our small town,<br/>
-                                    let’s call it Taxidentville.
-                                </p>
-                                <p>
-                                    The circles show the 10 places where an accident <span class="bold">might happen</span>.<br/>
-                                </p>
-                                <p>
-                                    Gladly, only one accident will happen.
-                                </p>
-                            </div>
-                            <div class="bottom-part">
-                                <p>
-                                    to prove it's random, you shuffle & place the accident
-                                </p>
-                                <button id="slide3-shuffle-accident-button" class="basic wide">start shuffling</button>&nbsp;
-                                <button id="slide3-place-accident-button" class="basic wide disabled">finish shuffling - place the accident</button>
-                            </div>
-                        </section>                        
-                        <section id="slide3-phase2" class="collapsed">
-                            <div class="top-part">
-                                <p>
-                                    Good, but which cab had the accident?
-                                </p>
-                                <p>
-                                    Like the accident, let’s place the cabs randomly.
-                                </p>
-                                <p>
-                                    (you can still change the number of green and blue cabs)
-                                </p>
-                            </div>                                      
-                            <div class="bottom-part">
-                                <button id="slide3-shuffle-cabs-button" class="basic wide">shuffle the cabs</button>&nbsp;
-                                <button id="slide3-place-cabs-button" class="basic wide disabled">place the cabs</button>
-                            </div>
-                        </section>
-                        <section id="slide3-phase3" class="collapsed">
-                            <div class="top-part">
-                                <section class="report-box">
-                                    <header>Report</header>
-                                    Blue cabs: <span id="slide3-phase3-report-cabs-percent"></span><br/>
-                                    Blue cab accidents: <span id="slide3-phase3-report-cabs-accidents"></span>
-                                </section>
-                                <section id="slide3-phase3-content_a">
-                                    <p>
-                                        Ah ha! A <span id="slide3-phase3-cab-color"></span> cab had the accident!
-                                    </p>
-                                    <p>
-                                        But remember, this is only <span class="bold">one possibility of many</span>.
-                                    </p>
-                                </section>
-                                <section id="slide3-phase3-content_b" class="collapsed">
-                                    <p>
-                                        As we can see, when there’s no witness, counting the blue cabs is the best guess we have.
-                                    </p>
-                                    <div class="side-by-side-buttons">
-                                        <button id="slide3-phase3-sandbox-run-sim-button" class="basic">run sim</button>
-                                        <button id="slide3-phase3-sandbox-100-times-button" class="basic">100 times</button>
-                                        <button id="slide3-phase3-sandbox-reset-stats-button" class="basic">reset stats</button>
-                                    </div>
-                                </section>
-                            </div>                                      
-                            <div class="bottom-part">
-                                <section id="slide3-phase3-button_a">
-                                    <p>
-                                        what would happen if we run the simulation...
-                                    </p>
-                                    <button id="slide3-100-times-button" class="basic wide">100 times?</button>
-                                </section>
-                                <section id="slide3-phase3-button_b" class="collapsed">
-                                    <p>
-                                        feel free to play around some more,<br/>
-                                        when you’re ready, let’s continue:
-                                    </p>
-                                    <button id="slide3-continue-button" class="cta wide">bring back the witness</button>
-                                </section>
-                            </div>
-                        </section>
-                    </section>
-                    <div class="explanation-graphic">
-                        <div id="taxidentville-graphics-container" class="taxidentville-graphics-container"><img src="images/taxidentville.png" /></div>
-                    </div>
-                </div>
-            </section>
-            <section id="slide4" class="slide collapsed">
-                <div class="top-controllers">
-                    <section id="slide4-cabs-slider" class="half-size"></section>
-                    <div class="separator"></div>
-                    <section id="slide4-witness-slider" class="half-size"></section>
-                </div>
-                <div class="main-explanation">
+    <body> 
+        <div class="main-wrapper">
+            <main>
+                <section id="slide1" class="slide">
                     <div class="top-part">
-                        <p class="centered-text">
-                            Our witness is only correct some of the time.<br/>
-    We simulate better or worse witnesses with the new slider at the top right. (it’s currently on 60%)
-                        </p>
-                        <p class="centered-text">
-                            The eyes above the cars show us what the witness would see.
-                        </p>
-                        <img src="images/slide4-illustration.png" />
+                        <section class="text-container">
+                            <section id="slide1-text1">
+                                <h1>The Taxi-cab Problem</h1>
+                                <p>
+                                    A cab was involved in a hit and run accident at night. Two cab companies, the Green and the Blue, operate in the city. 90% of the cabs in the city are Green and 10% are Blue.
+                                </p>
+                                <p>
+                                    A witness identified the cab as Blue. The court tested the reliability of the witness under the same circumstances that existed on the night of the accident and concluded that the witness correctly identified each one of the two colors 80% of the time and failed 20% of the time.                            
+                                </p>
+                                <p>
+                                    What is the probability that the cab involved in the accident was Blue rather than Green knowing that this witness identified it as Blue?</p>
+                                </p>
+                            </section>
+                            <section id="slide1-text2" class="collapsed">
+                                <h1>The Taxi-cab Problem</h1>
+                                <p id="slide1Text2DynamicParagaraph">
+                                    80% - Congratulations, like most people, including me, you’ve been fooled by your intuitions and got this completely wrong. Even though it doesn’t feel like it, what the witness saw is only a part of the picture.                                </p>
+                                <p>
+                                    Us humans are very bad at looking at the big picture of things.
+                                    That’s why most people, including me, think 80% is the right answer when they first read about this problem, while the actual answer is 30% (we’ll see why soon).
+                                </p>
+                                <p>
+                                    But why are we even talking about this?<br/>
+                                    This problem shows how people tend to ignore very important information when they look at the world, and when we get the world wrong, we make bad decisions.
+                                </p>
+                            </section>
+                        </section>
+                        <section class="illustration">
+                            <img src="images/illustration.png" />
+                        </section>
                     </div>
                     <div class="bottom-part">
-                        <button id="slide4-continue-button" class="cta">ok, that makes sense</button>
+                        <section id="percent-buttons">
+                            <button id="percent0">0%</button>
+                            <button id="percent10">10%</button>
+                            <button id="percent20">20%</button>
+                            <button id="percent30">30%</button>
+                            <button id="percent40">40%</button>
+                            <button id="percent50">50%</button>
+                            <button id="percent60">60%</button>
+                            <button id="percent70">70%</button>
+                            <button id="percent80">80%</button>
+                            <button id="percent90">90%</button>
+                            <button id="percent100">100%</button>
+                        </section>
+                        <button id="slide1-continue-button" class="cta collapsed">so, why ~30%?</button>
+                    </div>
+                </section>
+                <section id="slide2" class="slide collapsed">
+                    <section class="centered-text">
+                        <p>
+                            Let’s pretend (for a moment) there was no witness. (sounds sketchy I know)
+                        </p>
+                        <p>
+                            The original problem had a city with 90% green cabs and 10% blue cabs.<br>
+                            To make it simpler let's look at a small town with just 9 green cabs and 1 blue cab.
+                        </p>
+                        <p>
+                            But 9 and 1 is boring, go ahead and move the line to, I don’t know, 6 blue and 4 green cabs.
+                        </p>
                     </section>
-                </div>
-            </section>
-            <section id="slide5" class="slide collapsed">
-                <div class="top-controllers">
-                    <section id="slide5-cabs-slider" class="half-size"></section>
-                    <div class="separator"></div>
-                    <section id="slide5-witness-slider" class="half-size"></section>
-                </div>
-                <div class="main-explanation">
-                    <section class="explanation-text">
-                        <section id="slide5-phase1">
-                            <div class="top-part">
-                                <p>
-                                    Even though this example only has green cabs, the witness would still “see” a blue cab in some cases.<br/>
-                                    When a witness says a blue cab had the accident, we can look at the cabs with the blue eyes, and see how many of them are really blue. In this case, none of them are blue!
-                                </p>
-                                <p>
-                                    So a 60% accurate witness doesn’t have to be 60% correct!
-                                    In a town that only has green cabs, a witness that claims a blue cab had the accident would <span class="bold">always</span> be wrong.
-                                </p>
-                            </div>
-                            <div class="bottom-part">
-                                <p class="centered-text">
-                                    but the witness isn’t always useless,<br/>
-                                    go ahead and change half of the cabs to blue.
-                                </p>
-                            </div>
-                        </section>
-                        <section id="slide5-phase2" class="collapsed">
-                            <div class="top-part">
-                                <p>
-                                    When half of the cabs are blue and half are green, the witness gives us our best guess.
-                                </p>
-                                <p>
-                                    If we look only at the cabs seen as blue, we can see the real ones are the same percentage as the witness’s accuracy.<br/>
-                                    60% = 3 really-blue out of 5 seen-as-blue cabs
-                                </p>
-                                <figure class="wintnessed-cabs-example">
-                                    <svg><use xlink:href="svg/sprite.svg#cab_green_seenblue"></use></svg>
-                                    <svg><use xlink:href="svg/sprite.svg#cab_green_seenblue"></use></svg>
-                                    <svg><use xlink:href="svg/sprite.svg#cab_blue_seenblue"></use></svg>
-                                    <svg><use xlink:href="svg/sprite.svg#cab_blue_seenblue"></use></svg>
-                                    <svg><use xlink:href="svg/sprite.svg#cab_blue_seenblue"></use></svg>
-                                </figure>
-                            </div>
-                            <div class="bottom-part">
-                                <p class="centered-text">
-                                    are you ready for a challenge? let’s play with the witness a bit
-                                </p>
-                                <p class="centered-text">
-                                    To continue, make the witness see:<br/>
-                                    1 real blue car + 2 blue cars that are actually green +<br/>
-                                    7 real green cars.
-                                </p>
-                            </div>
-                        </section>
-                        <section id="slide5-phase3" class="collapsed">
-                            <div class="top-part">
-                                <p>
-                                    Well done! Have you noticed?<br/>
-                                    You’ve just recreated our original question!<br/>
-                                    90% green cars, 10% blue, 80% accurate witness.<br/>
-                                    Only 1 out of the 3 “blue” cabs is really blue,<br/>
-                                    that’s nearly 30%.
-                                </p>
-                                <figure class="wintnessed-cabs-example">
-                                    <svg><use xlink:href="svg/sprite.svg#cab_green_seenblue"></use></svg>
-                                    <svg><use xlink:href="svg/sprite.svg#cab_green_seenblue"></use></svg>
-                                    <svg><use xlink:href="svg/sprite.svg#cab_blue_seenblue"></use></svg>
-                                </figure>
-                            </div>
-                            <div class="bottom-part">
-                                <button id="slide5-phase3-continue-button" class="cta">so what does this mean?</button>
-                            </div>
-                        </section>
-                        <section id="slide5-phase4" class="collapsed">
-                            <div class="top-part">
-                                <p>
-                                    So, we’ve learned that in order to know the chance the witness is actually right and the cab is blue, we need to look at all of the possibilites of witness-seeing-blue-cabs, and count how many of them are real-blue and not mistake-blue.
-                                </p>
-                                <section class="report-box">
-                                    <header>
-                                        Scary Math Box
-                                    </header>
+                    <section id="slide2-cabs-slider"></section>
+                    <section id="slide2-bottom-part" class="bottom-part collapsed">
+                        <p>
+                            that’s much nicer! now we can
+                        </p>
+                        <button id="slide2-continue-button" class="cta">simulate an accident</button>
+                    </section>
+                </section>
+                <section id="slide3" class="slide collapsed">
+                    <section id="slide3-cabs-slider"></section>
+                    <div class="main-explanation">
+                        <section class="explanation-text">
+                            <section id="slide3-phase1">
+                                <div class="top-part">
                                     <p>
-                                        (blue cabs seen as blue) out of<br/>
-                                        (blue cabs seen as blue + green cabs seen as blue)
+                                        Welcome to our small town,<br/>
+                                        let’s call it Taxidentville.
                                     </p>
-                                    <img src="images/scaryMath.png" />
-                                </section>
-                            </div>
-                            <div class="bottom-part">
-                                <p class="centered-text">
-                                    feel free to play around some more,<br/>
-                                    when you’re done, let’s go
-                                </p>
-                                <button id="slide5-continue-button" class="cta">back to Taxidentville</button>
-                            </div>
-                        </section>
-                    </section>
-                    <section class="explanation-graphic">
-                        <section id="slide5-witness-cabs"></section>
-                    </section>
-                </div>
-            </section>
-            <section id="slide6" class="slide collapsed">
-                <div class="top-controllers">
-                    <section id="slide6-cabs-slider" class="half-size"></section>
-                    <div class="separator"></div>
-                    <section id="slide6-witness-slider" class="half-size"></section>
-                </div>
-                <div class="main-explanation">
-                    <section class="explanation-text">
-                        <div class="top-part">
-                            <p>
-                                Now let’s run the full simulation many times, and compare our calculated guess with the actual results.
-                            </p>
-                            <section class="report-box">
-                                <header>Report</header>
-                                Blue cabs: <span id="slide6-report-cabs-percent"></span><br/>
-                                Witness accuracy: <span id="slide6-report-witness-accuracy"></span><br/>
-                                Our calculated guess: <span id="slide6-report-our-guess" class="bold"></span><br/>
-                                <br/>
-                                Witness said blue: <span id="slide6-report-witness-said-blue"></span><br/>
-                                Witness was correct in saying “blue”: <span id="slide6-report-actual-result" class="bold"></span>
+                                    <p>
+                                        The circles show the 10 places where an accident <span class="bold">might happen</span>.<br/>
+                                    </p>
+                                    <p>
+                                        Gladly, only one accident will happen.
+                                    </p>
+                                </div>
+                                <div class="bottom-part">
+                                    <p>
+                                        to prove it's random, you shuffle & place the accident
+                                    </p>
+                                    <button id="slide3-shuffle-accident-button" class="basic wide">start shuffling</button>&nbsp;
+                                    <button id="slide3-place-accident-button" class="basic wide disabled">finish shuffling - place the accident</button>
+                                </div>
+                            </section>                        
+                            <section id="slide3-phase2" class="collapsed">
+                                <div class="top-part">
+                                    <p>
+                                        Good, but which cab had the accident?
+                                    </p>
+                                    <p>
+                                        Like the accident, let’s place the cabs randomly.
+                                    </p>
+                                    <p>
+                                        (you can still change the number of green and blue cabs)
+                                    </p>
+                                </div>                                      
+                                <div class="bottom-part">
+                                    <button id="slide3-shuffle-cabs-button" class="basic wide">shuffle the cabs</button>&nbsp;
+                                    <button id="slide3-place-cabs-button" class="basic wide disabled">place the cabs</button>
+                                </div>
                             </section>
-                            <div class="side-by-side-buttons">
-                                <button id="slide6-sandbox-run-sim-button" class="basic">run sim</button>
-                                <button id="slide6-sandbox-100-times-button" class="basic">100 times</button>
-                                <button id="slide6-sandbox-reset-stats-button" class="basic">reset stats</button>
-                            </div>                            
-                        </div>                                      
-                        <div class="bottom-part">                            
-                            <button id="slide6-continue-button" class="cta wide collapsed">when you're done</button>
-                        </div>                        
-                    </section>
-                    <div class="explanation-graphic">
-                        <div id="phase6-taxidentville-graphics-container" class="taxidentville-graphics-container">
-                            <img src="images/taxidentville.png" />
+                            <section id="slide3-phase3" class="collapsed">
+                                <div class="top-part">
+                                    <section class="report-box">
+                                        <header>Report</header>
+                                        Blue cabs: <span id="slide3-phase3-report-cabs-percent"></span><br/>
+                                        Blue cab accidents: <span id="slide3-phase3-report-cabs-accidents"></span>
+                                    </section>
+                                    <section id="slide3-phase3-content_a">
+                                        <p>
+                                            Ah ha! A <span id="slide3-phase3-cab-color"></span> cab had the accident!
+                                        </p>
+                                        <p>
+                                            But remember, this is only <span class="bold">one possibility of many</span>.
+                                        </p>
+                                    </section>
+                                    <section id="slide3-phase3-content_b" class="collapsed">
+                                        <p>
+                                            As we can see, when there’s no witness, counting the blue cabs is the best guess we have.
+                                        </p>
+                                        <div class="side-by-side-buttons">
+                                            <button id="slide3-phase3-sandbox-run-sim-button" class="basic">run sim</button>
+                                            <button id="slide3-phase3-sandbox-100-times-button" class="basic">100 times</button>
+                                            <button id="slide3-phase3-sandbox-reset-stats-button" class="basic">reset stats</button>
+                                        </div>
+                                    </section>
+                                </div>                                      
+                                <div class="bottom-part">
+                                    <section id="slide3-phase3-button_a">
+                                        <p>
+                                            what would happen if we run the simulation...
+                                        </p>
+                                        <button id="slide3-100-times-button" class="basic wide">100 times?</button>
+                                    </section>
+                                    <section id="slide3-phase3-button_b" class="collapsed">
+                                        <p>
+                                            feel free to play around some more,<br/>
+                                            when you’re ready, let’s continue:
+                                        </p>
+                                        <button id="slide3-continue-button" class="cta wide">bring back the witness</button>
+                                    </section>
+                                </div>
+                            </section>
+                        </section>
+                        <div class="explanation-graphic">
+                            <div id="taxidentville-graphics-container" class="taxidentville-graphics-container"><img src="images/taxidentville.png" /></div>
                         </div>
                     </div>
-                </div>                
-            </section>
-            <section id="credits" class="slide collapsed">
-                <p>
-                    Well, I really hope that made sense.
-                </p>
-                <header>
-                    <p class="created-by">
-                        created by
-                    </p>
-                    <h1>Gal Green</h1>
-                    <p class="for-eej">
-                        for the Explorable Explanations Jam
-                    </p>
-                </header>
-                <div class="bottom-part">
+                </section>
+                <section id="slide4" class="slide collapsed">
+                    <div class="top-controllers">
+                        <section id="slide4-cabs-slider" class="half-size"></section>
+                        <div class="separator"></div>
+                        <section id="slide4-witness-slider" class="half-size"></section>
+                    </div>
+                    <div class="main-explanation">
+                        <div class="top-part">
+                            <p class="centered-text">
+                                Our witness is only correct some of the time.<br/>
+        We simulate better or worse witnesses with the new slider at the top right. (it’s currently on 60%)
+                            </p>
+                            <p class="centered-text">
+                                The eyes above the cars show us what the witness would see.
+                            </p>
+                            <img src="images/slide4-illustration.png" />
+                        </div>
+                        <div class="bottom-part">
+                            <button id="slide4-continue-button" class="cta">ok, that makes sense</button>
+                </section>
+                </section>
+                <section id="slide5" class="slide collapsed">
+                    <div class="top-controllers">
+                        <section id="slide5-cabs-slider" class="half-size"></section>
+                        <div class="separator"></div>
+                        <section id="slide5-witness-slider" class="half-size"></section>
+                    </div>
+                    <div class="main-explanation">
+                        <section class="explanation-text">
+                            <section id="slide5-phase1">
+                                <div class="top-part">
+                                    <p>
+                                        Even though this example only has green cabs, the witness would still “see” a blue cab in some cases.<br/>
+                                        When a witness says a blue cab had the accident, we can look at the cabs with the blue eyes, and see how many of them are really blue. In this case, none of them are blue!
+                                    </p>
+                                    <p>
+                                        So a 60% accurate witness doesn’t have to be 60% correct!
+                                        In a town that only has green cabs, a witness that claims a blue cab had the accident would <span class="bold">always</span> be wrong.
+                                    </p>
+                                </div>
+                                <div class="bottom-part">
+                                    <p class="centered-text">
+                                        but the witness isn’t always useless,<br/>
+                                        go ahead and change half of the cabs to blue.
+                                    </p>
+                                </div>
+                            </section>
+                            <section id="slide5-phase2" class="collapsed">
+                                <div class="top-part">
+                                    <p>
+                                        When half of the cabs are blue and half are green, the witness gives us our best guess.
+                                    </p>
+                                    <p>
+                                        If we look only at the cabs seen as blue, we can see the real ones are the same percentage as the witness’s accuracy.<br/>
+                                        60% = 3 really-blue out of 5 seen-as-blue cabs
+                                    </p>
+                                    <figure class="wintnessed-cabs-example">
+                                        <svg><use xlink:href="svg/sprite.svg#cab_green_seenblue"></use></svg>
+                                        <svg><use xlink:href="svg/sprite.svg#cab_green_seenblue"></use></svg>
+                                        <svg><use xlink:href="svg/sprite.svg#cab_blue_seenblue"></use></svg>
+                                        <svg><use xlink:href="svg/sprite.svg#cab_blue_seenblue"></use></svg>
+                                        <svg><use xlink:href="svg/sprite.svg#cab_blue_seenblue"></use></svg>
+                                    </figure>
+                                </div>
+                                <div class="bottom-part">
+                                    <p class="centered-text">
+                                        are you ready for a challenge? let’s play with the witness a bit
+                                    </p>
+                                    <p class="centered-text">
+                                        To continue, make the witness see:<br/>
+                                        1 real blue car + 2 blue cars that are actually green +<br/>
+                                        7 real green cars.
+                                    </p>
+                                </div>
+                            </section>
+                            <section id="slide5-phase3" class="collapsed">
+                                <div class="top-part">
+                                    <p>
+                                        Well done! Have you noticed?<br/>
+                                        You’ve just recreated our original question!<br/>
+                                        90% green cars, 10% blue, 80% accurate witness.<br/>
+                                        Only 1 out of the 3 “blue” cabs is really blue,<br/>
+                                        that’s nearly 30%.
+                                    </p>
+                                    <figure class="wintnessed-cabs-example">
+                                        <svg><use xlink:href="svg/sprite.svg#cab_green_seenblue"></use></svg>
+                                        <svg><use xlink:href="svg/sprite.svg#cab_green_seenblue"></use></svg>
+                                        <svg><use xlink:href="svg/sprite.svg#cab_blue_seenblue"></use></svg>
+                                    </figure>
+                                </div>
+                                <div class="bottom-part">
+                                    <button id="slide5-phase3-continue-button" class="cta">so what does this mean?</button>
+                                </div>
+                            </section>
+                            <section id="slide5-phase4" class="collapsed">
+                                <div class="top-part">
+                                    <p>
+                                        So, we’ve learned that in order to know the chance the witness is actually right and the cab is blue, we need to look at all of the possibilites of witness-seeing-blue-cabs, and count how many of them are real-blue and not mistake-blue.
+                                    </p>
+                                    <section class="report-box">
+                                        <header>
+                                            Scary Math Box
+                                        </header>
+                                        <p>
+                                            (blue cabs seen as blue) out of<br/>
+                                            (blue cabs seen as blue + green cabs seen as blue)
+                                        </p>
+                                        <img src="images/scaryMath.png" />
+                                    </section>
+                                </div>
+                                <div class="bottom-part">
+                                    <p class="centered-text">
+                                        feel free to play around some more,<br/>
+                                        when you’re done, let’s go
+                                    </p>
+                                    <button id="slide5-continue-button" class="cta">back to Taxidentville</button>
+                                </div>
+                            </section>
+                        </section>
+                        <section class="explanation-graphic">
+                            <section id="slide5-witness-cabs"></section>
+                        </section>
+                    </div>
+                </section>
+                <section id="slide6" class="slide collapsed">
+                    <div class="top-controllers">
+                        <section id="slide6-cabs-slider" class="half-size"></section>
+                        <div class="separator"></div>
+                        <section id="slide6-witness-slider" class="half-size"></section>
+                    </div>
+                    <div class="main-explanation">
+                        <section class="explanation-text">
+                            <div class="top-part">
+                                <p>
+                                    Now let’s run the full simulation many times, and compare our calculated guess with the actual results.
+                                </p>
+                                <section class="report-box">
+                                    <header>Report</header>
+                                    Blue cabs: <span id="slide6-report-cabs-percent"></span><br/>
+                                    Witness accuracy: <span id="slide6-report-witness-accuracy"></span><br/>
+                                    Our calculated guess: <span id="slide6-report-our-guess" class="bold"></span><br/>
+                                    <br/>
+                                    Witness said blue: <span id="slide6-report-witness-said-blue"></span><br/>
+                                    Witness was correct in saying “blue”: <span id="slide6-report-actual-result" class="bold"></span>
+                                </section>
+                                <div class="side-by-side-buttons">
+                                    <button id="slide6-sandbox-run-sim-button" class="basic">run sim</button>
+                                    <button id="slide6-sandbox-100-times-button" class="basic">100 times</button>
+                                    <button id="slide6-sandbox-reset-stats-button" class="basic">reset stats</button>
+                                </div>                            
+                            </div>                                      
+                            <div class="bottom-part">                            
+                                <button id="slide6-continue-button" class="cta wide collapsed">when you're done</button>
+                            </div>                        
+                        </section>
+                        <div class="explanation-graphic">
+                            <div id="phase6-taxidentville-graphics-container" class="taxidentville-graphics-container">
+                                <img src="images/taxidentville.png" />
+                            </div>
+                        </div>
+                    </div>                
+                </section>
+                <section id="credits" class="slide collapsed">
                     <p>
-                        My thanks to:<br/>
-                        Erez Reznikov - for some graphic design tips<br/>
-                        Nicky Case - for the inspiration and making this jam happen<br/>
-                        My boss Alon - for letting me miss some work to make the jam deadline<br/>
-                        You - for checking this out
+                        Well, I really hope that made sense.
                     </p>
-                    <p>
-                        Say hi to me on: <a href="https://www.facebook.com/gal.green" target="_blank">Facebook</a>, <a href="https://www.linkedin.com/pub/gal-green/8/95a/205" target="_blank">LinkedIn</a>
-                    </p>
-                    <p>
-                        Based on the original taxicab problem by Amos Tversky and Daniel Kahneman (1982)
-                    </p>
-                </div>
-            </section>
-        </main>
+                    <header>
+                        <p class="created-by">
+                            created by
+                        </p>
+                        <h1>Gal Green</h1>
+                        <p class="for-eej">
+                            for the Explorable Explanations Jam
+                        </p>
+                    </header>
+                    <div class="bottom-part">
+                        <p>
+                            My thanks to:<br/>
+                            Erez Reznikov - for some graphic design tips<br/>
+                            Nicky Case - for the inspiration and making this jam happen<br/>
+                            My boss Alon - for letting me miss some work to make the jam deadline<br/>
+                            You - for checking this out
+                        </p>
+                        <p>
+                            Say hi to me on: <a href="https://www.facebook.com/gal.green" target="_blank">Facebook</a>, <a href="https://www.linkedin.com/pub/gal-green/8/95a/205" target="_blank">LinkedIn</a>
+                        </p>
+                        <p>
+                            Based on the original taxicab problem by Amos Tversky and Daniel Kahneman (1982)
+                        </p>
+                    </div>
+                </section>
+            </main>
+        </div>       
         <footer>
             <nav id="slides-navigation"></nav>
         </footer>
