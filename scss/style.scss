@@ -70,10 +70,11 @@ footer {
     margin-top: auto;
     height: 60px;
     background: #113A27;
+    position: relative;
 
     nav {
         display: flex;
-        width: 620px; height: 100%;
+        width: 560px; height: 100%;
         justify-content: space-between;
         align-items: center;
         margin: 0 auto;
@@ -93,6 +94,32 @@ footer {
             &.current {
                 background: #E6FFF3;
             }
+        }
+    }
+
+    .share-buttons {
+        position: absolute;
+        right: 12px;
+        display: flex;
+        bottom: 0;
+        top: 0;
+        align-items: center;
+        justify-content: space-between;
+        width: 120px;
+
+        > a {                      
+            color: #4AFFAD;
+
+            transition: .15s color;
+            &:hover {
+                color: #E6FFF3;
+            }
+
+            > svg {
+                fill: currentColor;
+                width: 36px;
+                height: 36px;
+            }                        
         }
     }
 }
@@ -688,6 +715,8 @@ span.bold {
         text-align: center;
 
         > header {
+            position: relative;
+
             .created-by {
                 font-size: 26px;
             }
@@ -699,6 +728,14 @@ span.bold {
 
             .for-eej {
                 font-size: 20px;
+            }
+
+            .not-blue {
+                position: absolute;
+                top: 80px;
+                right: -20px;
+                opacity: 1;
+                font-size: 12px;
             }
         }
 
@@ -721,6 +758,11 @@ span.bold {
         a {
             color: #4AFFAD;
             text-decoration: underline;
+
+            transition: .15s color;
+            &:hover {
+                color: #E6FFF3;
+            }
         }
     }
 }

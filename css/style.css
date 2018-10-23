@@ -53,10 +53,11 @@ footer {
   right: 0;
   margin-top: auto;
   height: 60px;
-  background: #113A27; }
+  background: #113A27;
+  position: relative; }
   footer nav {
     display: flex;
-    width: 620px;
+    width: 560px;
     height: 100%;
     justify-content: space-between;
     align-items: center;
@@ -72,6 +73,24 @@ footer {
         background: #E6FFF3; }
       footer nav button.current {
         background: #E6FFF3; }
+  footer .share-buttons {
+    position: absolute;
+    right: 12px;
+    display: flex;
+    bottom: 0;
+    top: 0;
+    align-items: center;
+    justify-content: space-between;
+    width: 120px; }
+    footer .share-buttons > a {
+      color: #4AFFAD;
+      transition: .15s color; }
+      footer .share-buttons > a:hover {
+        color: #E6FFF3; }
+      footer .share-buttons > a > svg {
+        fill: currentColor;
+        width: 36px;
+        height: 36px; }
 
 h1 {
   font-size: 28px;
@@ -437,13 +456,21 @@ span.bold {
     color: white;
     align-items: center;
     text-align: center; }
-    .slide#credits > header .created-by {
-      font-size: 26px; }
-    .slide#credits > header > h1 {
-      font-size: 48px;
-      color: #4AFFAD; }
-    .slide#credits > header .for-eej {
-      font-size: 20px; }
+    .slide#credits > header {
+      position: relative; }
+      .slide#credits > header .created-by {
+        font-size: 26px; }
+      .slide#credits > header > h1 {
+        font-size: 48px;
+        color: #4AFFAD; }
+      .slide#credits > header .for-eej {
+        font-size: 20px; }
+      .slide#credits > header .not-blue {
+        position: absolute;
+        top: 80px;
+        right: -20px;
+        opacity: 1;
+        font-size: 12px; }
     .slide#credits .bottom-part {
       text-align: left;
       margin-top: auto;
@@ -455,7 +482,10 @@ span.bold {
         margin-bottom: 0; }
     .slide#credits a {
       color: #4AFFAD;
-      text-decoration: underline; }
+      text-decoration: underline;
+      transition: .15s color; }
+      .slide#credits a:hover {
+        color: #E6FFF3; }
 
 .side-by-side-buttons {
   display: flex;
