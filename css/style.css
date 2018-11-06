@@ -126,6 +126,10 @@ button {
 span.bold {
   font-weight: bold; }
 
+span.cta {
+  background: #E6FFF3;
+  padding: 3px; }
+
 .slide {
   position: absolute;
   transition: .4s;
