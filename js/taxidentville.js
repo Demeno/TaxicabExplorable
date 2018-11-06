@@ -11,9 +11,27 @@ var Taxidentville;
                 new Taxidentville.Slide6(this),
                 new Taxidentville.Credits(this),
             ];
+            window.onhashchange = () => {
+                this.navigateToSlideByHashOrDefault();
+            };
             this.initNavButtons(this.slides);
             this.currentSlideIndex = -1;
-            this.gotoNextSlide();
+            this.navigateToSlideByHashOrDefault();
+        }
+        navigateToSlideByHashOrDefault() {
+            let slideIndex;
+            let hash = window.location.hash.substr(1);
+            let hashAsNumber = Number(hash);
+            if (hashAsNumber && !this.isValidSlideNumber(hashAsNumber)) {
+                slideIndex = hashAsNumber - 1;
+            }
+            else {
+                slideIndex = 0;
+            }
+            this.navigateToSlideIndex(slideIndex, true);
+        }
+        isValidSlideNumber(number) {
+            return (isNaN(number) || number < 1 || number > this.slides.length);
         }
         initNavButtons(slides) {
             const navButtonsContainer = document.getElementById("slides-navigation");
@@ -31,13 +49,23 @@ var Taxidentville;
                 if (!(clickedElement instanceof HTMLButtonElement))
                     return;
                 let index = this.navButtons.indexOf(clickedElement);
-                this.gotoSlideIndex(index);
+                this.navigateToSlideIndex(index);
             });
         }
-        gotoNextSlide() {
-            this.gotoSlideIndex(this.currentSlideIndex + 1);
+        navigateToNextSlide() {
+            this.navigateToSlideIndex(this.currentSlideIndex + 1);
+        }
+        navigateToSlideIndex(slideIndex, isFirst) {
+            if (isFirst) {
+                history.replaceState({ slideIndex: slideIndex }, null, `#${slideIndex + 1}`);
+            }
+            else {
+                history.pushState({ slideIndex: slideIndex }, null, `#${slideIndex + 1}`);
+            }
+            this.gotoSlideIndex(slideIndex);
         }
         gotoSlideIndex(slideIndex) {
+            // console.log("goto: " + slideIndex);
             let nextSlideAppearanceDelay = 200;
             if (this.currentSlideIndex == slideIndex) {
                 // Longer delay in order to reshow the slide only after it was fully hidden

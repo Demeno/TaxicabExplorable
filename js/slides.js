@@ -19,7 +19,7 @@ var Taxidentville;
             this.slide.classList.add("collapsed");
         }
         finishSlide() {
-            this.slideManager.gotoNextSlide();
+            this.slideManager.navigateToNextSlide();
         }
     }
     Taxidentville.Slide = Slide;

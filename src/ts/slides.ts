@@ -1,6 +1,6 @@
 namespace Taxidentville {
     export interface SlideManager {
-        gotoNextSlide();
+        navigateToNextSlide();
     }
 
     export abstract class Slide {
@@ -29,7 +29,7 @@ namespace Taxidentville {
         }
         
         finishSlide() {
-            this.slideManager.gotoNextSlide();
+            this.slideManager.navigateToNextSlide();
         }
     }
 

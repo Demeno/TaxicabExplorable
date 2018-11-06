@@ -1,17 +1,35 @@
 <html>
     <head>
+        <meta charset="utf-8">
         <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124204627-1"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-124204627-1');
 
-  gtag('config', 'UA-124204627-1');
+    // Addition for SPA [START]
+    function insertCallback(parent, funcname, callback, ...args) {
+        let oldFunc = parent[funcname] ? parent[funcname] : function () { }
+        parent[funcname] = function () {
+            oldFunc.apply(this, arguments)
+            return callback(...args)
+        }
+    }
+
+    function notify_analytics(l) {
+        let newPage = l.pathname + l.hash
+        gtag('config', 'UA-124204627-1', { 'page_path': newPage }); 
+        // console.log("ga: " + newPage);
+    }
+
+    insertCallback(window.history, "pushState", notify_analytics, location)
+    insertCallback(window.history, "replaceState", notify_analytics, location)
+    // Addition for SPA [END]
 </script>
-
         <title>Taxi-cab problem explorable by Gal Green</title>
-        <meta charset="utf-8">
+        
         <link href="https://fonts.googleapis.com/css?family=Istok+Web:400,700" rel="stylesheet">
         <link rel="stylesheet" type="text/css" media="all" href="css/style.css" />
         <link rel="preload" href="svg/sprite.svg" as="image" />
