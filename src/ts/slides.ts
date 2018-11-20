@@ -75,6 +75,12 @@ namespace Taxidentville {
             this.continueButton.classList.remove("collapsed");
             this.slide1Text1.classList.add("collapsed");
             this.slide1Text2.classList.remove("collapsed");
+            
+            // @ts-ignore
+            gtag('event', 'question_selected_percent', {
+                event_label: `selected_percent_${selectedPercent}`,
+                value: selectedPercent
+            });
         }
 
         updateDynamicParagraph(selectedPercent: number) {
