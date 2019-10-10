@@ -95,20 +95,20 @@
                 <section id="slide2" class="slide collapsed">
                     <section class="centered-text">
                         <p>
-                            Let’s pretend (for a moment) there was no witness. (sounds sketchy I know)
+                            Let’s pretend for a moment there was no witness. (sounds sketchy I know)
                         </p>
                         <p>
                             The original problem had a city with 90% green cabs and 10% blue cabs.<br>
-                            To make it simpler let's look at a small town with just 9 green cabs and 1 blue cab.
+                            To make it simpler, let’s look at a small town with just 9 green cabs and 1 blue cab.
                         </p>
                         <p>
-                            But 9 and 1 is boring, <span class="cta">go ahead and move the line to, I don’t know, 6 blue and 4 green cabs.</span>
+                            But 9 and 1 is boring, <span class="cta">go ahead and drag the cyan slider to 6 blue and 4 green cabs.</span>
                         </p>
                     </section>
                     <section id="slide2-cabs-slider"></section>
                     <section id="slide2-bottom-part" class="bottom-part collapsed">
                         <p>
-                            that’s much nicer! now we can
+                            that’s much nicer! now let’s
                         </p>
                         <button id="slide2-continue-button" class="cta">simulate an accident</button>
                     </section>
@@ -213,10 +213,12 @@
                         <div class="top-part">
                             <p class="centered-text">
                                 Our witness is only correct some of the time.<br/>
-        We simulate better or worse witnesses with the new slider at the top right. (it’s currently on 60%)
+                                We simulate a better or worse witness with the new slider at the top right.<br/>
+                                A 60% correct witness has a 60% chance to report the truth.<br/>
+                                0% = always wrong/lying | 50% = completely random | 100% = always right
                             </p>
                             <p class="centered-text">
-                                The eyes above the cars show us what the witness would see.
+                                The eyes above the cabs show us what the witness would see.
                             </p>
                             <img src="images/slide4-illustration.png" />
                         </div>
@@ -235,12 +237,12 @@
                             <section id="slide5-phase1">
                                 <div class="top-part">
                                     <p>
-                                        Even though this example only has green cabs, the witness would still “see” a blue cab in some cases.<br/>
+                                        Although this example only has green cabs, any non-perfect witness would still “see” a blue cab in some cases.<br/>
                                         When a witness says a blue cab had the accident, we can look at the cabs with the blue eyes, and see how many of them are really blue. In this case, none of them are blue!
                                     </p>
                                     <p>
                                         So a 60% accurate witness doesn’t have to be 60% correct!
-                                        In a town that only has green cabs, a witness that claims a blue cab had the accident would <span class="bold">always</span> be wrong.
+                                        In a town that only has green cabs, a witness that claims a blue cab had the accident would <span class="bold">always</span> be wrong (0% correct)!
                                     </p>
                                 </div>
                                 <div class="bottom-part">
@@ -256,7 +258,7 @@
                                         When half of the cabs are blue and half are green, the witness gives us our best guess.
                                     </p>
                                     <p>
-                                        If we look only at the cabs seen as blue, we can see the real ones are the same percentage as the witness’s accuracy.<br/>
+                                        If we look at cases where the cab was seen as blue, we can tell the real ones match our witness's accuracy.<br/>
                                         60% = 3 really-blue out of 5 seen-as-blue cabs
                                     </p>
                                     <figure class="wintnessed-cabs-example">
@@ -269,21 +271,23 @@
                                 </div>
                                 <div class="bottom-part">
                                     <p class="centered-text">
-                                        are you ready for a challenge? let’s play with the witness a bit
+                                        are you ready for a challenge? let’s play with the sliders a bit
                                     </p>
                                     <p class="centered-text">
-                                        <span class="cta">To continue, make the witness see:<br/>
-                                        1 real blue car + 2 blue cars that are actually green +<br/>
-                                        7 real green cars.</span>
+                                        <span class="cta">To continue,<br/>
+                                        set a scenario in which our witness would see:<br/>
+                                        10% chance - a blue cab that is actually blue<br/>
+                                        20% chance - a blue cab that is in fact green<br/>
+                                        70% chance - a green cab that is actually green</span>
                                     </p>
                                 </div>
                             </section>
                             <section id="slide5-phase3" class="collapsed">
                                 <div class="top-part">
                                     <p>
-                                        Well done! Have you noticed?<br/>
-                                        You’ve just recreated our original question!<br/>
-                                        90% green cars, 10% blue, 80% accurate witness.<br/>
+                                        Well done!<br/>
+                                        Have you noticed? You’ve recreated our original question!<br/>
+                                        90% green cab, 10% blue, 80% accurate witness.<br/>
                                         Only 1 out of the 3 “blue” cabs is really blue,<br/>
                                         that’s nearly 30%.
                                     </p>
@@ -300,7 +304,7 @@
                             <section id="slide5-phase4" class="collapsed">
                                 <div class="top-part">
                                     <p>
-                                        So, we’ve learned that in order to know the chance the witness is actually right and the cab is blue, we need to look at all of the possibilites of witness-seeing-blue-cabs, and count how many of them are real-blue and not mistake-blue.
+                                        So, we’ve learned that in order to know the chance the witness is actually right in saying the cab is blue, we need to look at all of the possibilites of witness-seeing-blue-cabs, and count how many of them are real-blue and not mistake-blue.
                                     </p>
                                     <section class="report-box">
                                         <header>
