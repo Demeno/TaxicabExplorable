@@ -132,6 +132,8 @@ namespace Taxidentville {
                 }
             });
 
+            this.cabSliderController.startFtueHop();
+
             super.show();
         }    
         leave() {            

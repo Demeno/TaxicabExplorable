@@ -22,6 +22,12 @@ var Taxidentville;
                 this.sliderSvgWrapper.classList.remove("disabled");
             }
         }
+        startFtueHop() {
+            this.sliderSvgWrapper.classList.add("ftue-hop");
+        }
+        stopFtueHop() {
+            this.sliderSvgWrapper.classList.remove("ftue-hop");
+        }
         setValue(value) {
             if (this.value != value) {
                 this.value = value;
@@ -78,6 +84,8 @@ var Taxidentville;
             this.endDrag();
         }
         startDrag(clientX) {
+            // stop FTUE when starting to drag
+            this.stopFtueHop();
             let left = this.leftStringToLeftNumber(this.sliderSvgWrapper.style.left);
             this.dragging = {
                 xOnDown: clientX,
@@ -100,6 +108,7 @@ var Taxidentville;
             }
         }
         dispose() {
+            this.stopFtueHop();
             this.sliderSvgWrapper.removeEventListener('touchstart', this.hander_sliderSvg_touchstart);
             this.sliderSvgWrapper.removeEventListener('touchmove', this.hander_sliderSvg_touchmove);
             this.sliderSvgWrapper.removeEventListener('touchend', this.hander_sliderSvg_touchend);

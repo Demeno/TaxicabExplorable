@@ -1,5 +1,5 @@
 namespace Taxidentville {
-    export class CabSliderController {        
+    export class CabSliderController {
         cabsSlider: HTMLElement;
         sliderSvgWrapper: HTMLDivElement;
         sliderSvg: SVGSVGElement;
@@ -40,7 +40,14 @@ namespace Taxidentville {
             } else {
                 this.sliderSvgWrapper.classList.remove("disabled");
             }
-        }        
+        }  
+        
+        public startFtueHop() {
+            this.sliderSvgWrapper.classList.add("ftue-hop");
+        }
+        public stopFtueHop() {
+            this.sliderSvgWrapper.classList.remove("ftue-hop");
+        }
 
         private setValue(value) {
             if (this.value != value) {
@@ -104,6 +111,9 @@ namespace Taxidentville {
         }
         
         private startDrag(clientX: number) {
+            // stop FTUE when starting to drag
+            this.stopFtueHop();
+
             let left = this.leftStringToLeftNumber(this.sliderSvgWrapper.style.left);
             this.dragging = {
                 xOnDown: clientX,
@@ -129,6 +139,7 @@ namespace Taxidentville {
         }
 
         dispose() {
+            this.stopFtueHop();
             this.sliderSvgWrapper.removeEventListener('touchstart', this.hander_sliderSvg_touchstart);
             this.sliderSvgWrapper.removeEventListener('touchmove', this.hander_sliderSvg_touchmove);
             this.sliderSvgWrapper.removeEventListener('touchend', this.hander_sliderSvg_touchend);

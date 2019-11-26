@@ -105,6 +105,7 @@ var Taxidentville;
                     document.getElementById("slide2-bottom-part").classList.add("collapsed");
                 }
             });
+            this.cabSliderController.startFtueHop();
             super.show();
         }
         leave() {
