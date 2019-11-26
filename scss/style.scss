@@ -141,7 +141,8 @@ button {
     padding: 5px 10px;
     transition: .15s;
     &:hover {
-        filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.9)) brightness(1.1);
+        filter: drop-shadow(0px 3px 0px rgba(0,0,0,0.8));
+        transform: translateY(-3px);
     }
     &.collapsed {
         display: none;
@@ -798,27 +799,36 @@ span.cta {
     // width: calc(100% + 40px);
     // margin: 0 -20px;
 
-    svg.cabs-slider-slider {
-        width: 22.584px;
-        height: 83.922px;
-
+    .cabs-slider-slider {
         position: absolute;
         
-        fill: #3FE09C;
-        transition: fill .15s;
-        &:hover {
-            fill: hsl(155, 72%, 75%);
-        }
-        &.disabled {
-            fill: #cccccc;
-            pointer-events: none;
-        }
+        // extra hotzone
+        padding: 2.5%;
+        margin: -2.5%;
         
-        > use {
-            pointer-events: none;
+        > svg {
+            width: 22.584px;
+            height: 83.922px;
+            transform-origin: top center;
+            
+            fill: #3FE09C;
+            transition: fill .15s;
+            > use {
+                pointer-events: none;
+            }            
         }
 
-        transform-origin: top center;
+        &:hover {
+            > svg {
+                fill: hsl(155, 72%, 75%);
+            }
+        }
+        &.disabled {
+            pointer-events: none;
+            > svg {
+                fill: #cccccc;
+            }
+        }
     }
 
     ul.cabs-slider-cabs {
@@ -848,9 +858,11 @@ span.cta {
     &.half-size {
         height: 42px;
 
-        svg.cabs-slider-slider {
-            width: 11.292px;
-            height: 41.961px;
+        .cabs-slider-slider {
+            > svg {
+                width: 11.292px;
+                height: 41.961px;
+            }
         }
 
         ul.cabs-slider-cabs {
@@ -879,27 +891,36 @@ span.cta {
     // width: calc(100% + 40px);
     // margin: 0 -20px;
 
-    svg.witness-slider-slider {
-        width: 22.584px;
-        height: 83.922px;
-
+    .witness-slider-slider {
         position: absolute;
         
-        fill: #3FE09C;
-        transition: fill .15s;
-        &:hover {
-            fill: hsl(155, 72%, 75%);
-        }
-        &.disabled {
-            fill: #cccccc;
-            pointer-events: none;
-        }
+        // extra hotzone
+        padding: 2.5%;
+        margin: -2.5%;
         
-        > use {
-            pointer-events: none;
+        > svg {
+            width: 22.584px;
+            height: 83.922px;
+            transform-origin: top center;
+            
+            fill: #3FE09C;
+            transition: fill .15s;
+            > use {
+                pointer-events: none;
+            }            
         }
 
-        transform-origin: top center;
+        &:hover {
+            > svg {
+                fill: hsl(155, 72%, 75%);
+            }
+        }
+        &.disabled {
+            pointer-events: none;
+            > svg {
+                fill: #cccccc;
+            }
+        }
     }
 
     ul.witness-slider-heads {
@@ -948,9 +969,11 @@ span.cta {
     &.half-size {
         height: 42px;
 
-        svg.witness-slider-slider {
-            width: 11.292px;
-            height: 41.961px;
+        .witness-slider-slider {
+            > svg {
+                width: 11.292px;
+                height: 41.961px;
+            }
         }
 
         ul.witness-slider-heads {

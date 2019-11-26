@@ -3,6 +3,6 @@
       "target": "es6",
       "moduleResolution": "classic",
       "lib": [ "es2015", "dom",  "es2017" ],
-      "outDir": "../../js",
-    },
-  }
+      "outDir": "..\\..\\js"
+    }
+}

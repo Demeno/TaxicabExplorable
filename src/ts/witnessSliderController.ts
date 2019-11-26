@@ -1,6 +1,7 @@
 namespace Taxidentville {
     export class WitnessSliderController {        
         rootElement: HTMLElement;
+        sliderSvgWrapper: HTMLDivElement;
         sliderSvg: SVGSVGElement;
         witnessLi: HTMLLIElement[];
         
@@ -35,9 +36,9 @@ namespace Taxidentville {
         
         public setIsDisabled(isDisabled: boolean): void {
             if (isDisabled) {
-                this.sliderSvg.classList.add("disabled");
+                this.sliderSvgWrapper.classList.add("disabled");
             } else {
-                this.sliderSvg.classList.remove("disabled");
+                this.sliderSvgWrapper.classList.remove("disabled");
             }
         }        
 
@@ -56,7 +57,7 @@ namespace Taxidentville {
         }
 
         private setLeft(left: number) {
-            this.sliderSvg.style.left = left + "px";
+            this.sliderSvgWrapper.style.left = left + "px";
         }
 
         private valueByLeft(left: number):number {
@@ -103,7 +104,7 @@ namespace Taxidentville {
         }
         
         private startDrag(clientX: number) {
-            let left = this.leftStringToLeftNumber(this.sliderSvg.style.left);
+            let left = this.leftStringToLeftNumber(this.sliderSvgWrapper.style.left);
             this.dragging = {
                 xOnDown: clientX,
                 leftOnDown: left,
@@ -128,10 +129,10 @@ namespace Taxidentville {
         }
 
         dispose() {
-            this.sliderSvg.removeEventListener('touchstart', this.hander_sliderSvg_touchstart);
-            this.sliderSvg.removeEventListener('touchmove', this.hander_sliderSvg_touchmove);
-            this.sliderSvg.removeEventListener('touchend', this.hander_sliderSvg_touchend);
-            this.sliderSvg.removeEventListener('mousedown', this.hander_sliderSvg_mousedown);
+            this.sliderSvgWrapper.removeEventListener('touchstart', this.hander_sliderSvg_touchstart);
+            this.sliderSvgWrapper.removeEventListener('touchmove', this.hander_sliderSvg_touchmove);
+            this.sliderSvgWrapper.removeEventListener('touchend', this.hander_sliderSvg_touchend);
+            this.sliderSvgWrapper.removeEventListener('mousedown', this.hander_sliderSvg_mousedown);
             document.body.removeEventListener('mousemove', this.handler_body_mousemove);
             document.body.removeEventListener('mouseup', this.handler_body_mouseup);
             this.isDisposed = true;
@@ -154,15 +155,15 @@ namespace Taxidentville {
             this.handler_body_mousemove = this.body_mousemove.bind(this);
             this.handler_body_mouseup = this.body_mouseup.bind(this);
 
-            this.sliderSvg.addEventListener('touchstart', this.hander_sliderSvg_touchstart);
-            this.sliderSvg.addEventListener('touchmove', this.hander_sliderSvg_touchmove);
-            this.sliderSvg.addEventListener('touchend', this.hander_sliderSvg_touchend);
-            this.sliderSvg.addEventListener('mousedown', this.hander_sliderSvg_mousedown);
+            this.sliderSvgWrapper.addEventListener('touchstart', this.hander_sliderSvg_touchstart);
+            this.sliderSvgWrapper.addEventListener('touchmove', this.hander_sliderSvg_touchmove);
+            this.sliderSvgWrapper.addEventListener('touchend', this.hander_sliderSvg_touchend);
+            this.sliderSvgWrapper.addEventListener('mousedown', this.hander_sliderSvg_mousedown);
             document.body.addEventListener('mousemove', this.handler_body_mousemove);
             document.body.addEventListener('mouseup', this.handler_body_mouseup);
             
             const loop = () => {
-                let currentLeft = this.leftStringToLeftNumber(this.sliderSvg.style.left);
+                let currentLeft = this.leftStringToLeftNumber(this.sliderSvgWrapper.style.left);
 
                 let closestStep = this.valueByLeft(currentLeft);
                 this.setValue(closestStep);
@@ -205,9 +206,15 @@ namespace Taxidentville {
 
             rootElement.innerHTML = "";
         
+            // <div>
+            this.sliderSvgWrapper = document.createElement("div");
+            this.sliderSvgWrapper.classList.add("witness-slider-slider");
+
+            // <svg>
             this.sliderSvg = Helper.createSvgFromSprite('slider');
-            this.sliderSvg.classList.add("witness-slider-slider");
-            rootElement.appendChild(this.sliderSvg);
+            this.sliderSvgWrapper.appendChild(this.sliderSvg);
+            
+            rootElement.appendChild(this.sliderSvgWrapper);
             
             // <ul>
             let witnessSliderHeads = document.createElement("ul");
