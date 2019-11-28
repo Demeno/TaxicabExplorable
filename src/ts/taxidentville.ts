@@ -6,6 +6,7 @@ namespace Taxidentville {
 
         constructor() {
             this.slides = [
+                new Intro(this),
                 new Slide1(this),
                 new Slide2(this),
                 new Slide3(this),
@@ -29,7 +30,7 @@ namespace Taxidentville {
             let hash = window.location.hash.substr(1);
             let hashAsNumber = Number(hash);
             if (hashAsNumber && !this.isValidSlideNumber(hashAsNumber)) {
-                slideIndex = hashAsNumber - 1;
+                slideIndex = hashAsNumber;
             }
             else {
                 slideIndex = 0;
@@ -49,7 +50,7 @@ namespace Taxidentville {
             this.navButtons = [];            
             for (let slideKey in slides) {
                 let button = document.createElement("button");
-                button.textContent = String(Number(slideKey) + 1);
+                button.textContent = String(Number(slideKey));
 
                 navButtonsContainer.appendChild(button);
                 this.navButtons.push(button);
@@ -71,9 +72,9 @@ namespace Taxidentville {
 
         navigateToSlideIndex(slideIndex: number, isFirst?: boolean) {
             if (isFirst) {
-                history.replaceState({ slideIndex: slideIndex }, null, `#${slideIndex + 1}`);
+                history.replaceState({ slideIndex: slideIndex }, null, `#${slideIndex}`);
             } else {
-                history.pushState({ slideIndex: slideIndex }, null, `#${slideIndex + 1}`);
+                history.pushState({ slideIndex: slideIndex }, null, `#${slideIndex}`);
             }
 
             this.gotoSlideIndex(slideIndex);

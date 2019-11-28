@@ -23,6 +23,25 @@ var Taxidentville;
         }
     }
     Taxidentville.Slide = Slide;
+    class Intro extends Slide {
+        constructor(slideManager) {
+            super("intro", slideManager);
+            let continueButton = document.getElementById("intro-continue-button");
+            continueButton.addEventListener("click", (ev) => {
+                this.finishSlide();
+            });
+        }
+        enter() {
+            super.show();
+        }
+        leave() {
+            super.hide();
+            setTimeout(() => {
+                super.collapse();
+            }, 400 + 10);
+        }
+    }
+    Taxidentville.Intro = Intro;
     class Slide1 extends Slide {
         constructor(slideManager) {
             super("slide1", slideManager);

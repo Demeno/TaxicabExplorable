@@ -33,7 +33,28 @@ namespace Taxidentville {
         }
     }
 
-    export class Slide1 extends Slide {        
+    export class Intro extends Slide {
+        constructor(slideManager: SlideManager) {
+            super("intro", slideManager);
+
+            let continueButton = <HTMLButtonElement>document.getElementById("intro-continue-button");
+            continueButton.addEventListener("click", (ev) => {
+                this.finishSlide();
+            });
+        }
+
+        enter() {
+            super.show();
+        }    
+        leave() {            
+            super.hide();
+            setTimeout(() => {
+                super.collapse();
+            }, 400 + 10);
+        }
+    }
+
+    export class Slide1 extends Slide {
         percentButtons: HTMLElement;
         continueButton: HTMLButtonElement;
         slide1Text1: HTMLElement;        

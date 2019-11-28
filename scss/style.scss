@@ -195,6 +195,24 @@ span.cta {
     width: 100%;
     height: 100%;
 
+    &#intro {
+        align-items: center;
+        text-align: center;
+
+        > h1 {
+            font-size: 48px;
+            margin-bottom: 24px;
+        }
+
+        .play-time {
+            opacity: 0.5;
+        }
+
+        > button {
+            margin-top: auto;
+        }
+    }
+
     &#slide1 {
         .top-part {
             display: flex;

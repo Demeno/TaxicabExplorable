@@ -3,6 +3,7 @@ var Taxidentville;
     class Main {
         constructor() {
             this.slides = [
+                new Taxidentville.Intro(this),
                 new Taxidentville.Slide1(this),
                 new Taxidentville.Slide2(this),
                 new Taxidentville.Slide3(this),
@@ -23,7 +24,7 @@ var Taxidentville;
             let hash = window.location.hash.substr(1);
             let hashAsNumber = Number(hash);
             if (hashAsNumber && !this.isValidSlideNumber(hashAsNumber)) {
-                slideIndex = hashAsNumber - 1;
+                slideIndex = hashAsNumber;
             }
             else {
                 slideIndex = 0;
@@ -39,7 +40,7 @@ var Taxidentville;
             this.navButtons = [];
             for (let slideKey in slides) {
                 let button = document.createElement("button");
-                button.textContent = String(Number(slideKey) + 1);
+                button.textContent = String(Number(slideKey));
                 navButtonsContainer.appendChild(button);
                 this.navButtons.push(button);
             }
@@ -57,10 +58,10 @@ var Taxidentville;
         }
         navigateToSlideIndex(slideIndex, isFirst) {
             if (isFirst) {
-                history.replaceState({ slideIndex: slideIndex }, null, `#${slideIndex + 1}`);
+                history.replaceState({ slideIndex: slideIndex }, null, `#${slideIndex}`);
             }
             else {
-                history.pushState({ slideIndex: slideIndex }, null, `#${slideIndex + 1}`);
+                history.pushState({ slideIndex: slideIndex }, null, `#${slideIndex}`);
             }
             this.gotoSlideIndex(slideIndex);
         }
