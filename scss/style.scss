@@ -140,7 +140,7 @@ button {
     font-size: 24px;
     padding: 5px 10px;
     transition: .15s;
-    &:hover {
+    &:hover:not(:active) {
         filter: drop-shadow(0px 3px 0px rgba(0,0,0,0.8));
         transform: translateY(-3px);
     }
@@ -217,11 +217,11 @@ span.cta {
         .top-part {
             display: flex;
             height: 100%;
+            min-height: 0;
+            padding-bottom: 20px;
 
             .text-container {
-                // flex-grow: 1;
                 width: 463px;
-                height: 450px;
                 position: relative;
 
                 margin-right: 10px;
@@ -433,7 +433,7 @@ span.cta {
             display: flex;
             flex-direction: column;
             align-items: stretch;
-            height: 100%;
+            flex: 1;
         }
 
         .centered-text {
