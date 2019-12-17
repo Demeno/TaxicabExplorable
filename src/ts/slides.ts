@@ -46,7 +46,7 @@ namespace Taxidentville {
         enter() {
             super.show();
         }    
-        leave() {            
+        leave() {
             super.hide();
             setTimeout(() => {
                 super.collapse();
