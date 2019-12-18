@@ -225,22 +225,36 @@ span.cta {
 
             > * {
                 position: absolute;
-                left: -800px;
-                right: -800px;
+                left: 0;
+                right: 0;
+                width: 1500px;
+                height: 38px;
+                margin: 0 auto;
 
                 > * {
                     position: absolute;
                 }                
                 
-                &:nth-child(1) { --depth: -3; }
-                &:nth-child(2) { --depth: -2; }
-                &:nth-child(3) { --depth: -1; }
-                &:nth-child(4) { --depth: 1; }
-                &:nth-child(5) { --depth: 2; }
-                &:nth-child(6) { --depth: 3; }
+                &:nth-child(1) { --depth: -1; }
+                &:nth-child(2) { --depth: 0; }
+                &:nth-child(3) { --depth: 0; }
+                &:nth-child(4) { --depth: 0; }
+                &:nth-child(5) { --depth: 1; }
 
-                top: calc(40% + (1 - var(--depth)) * -6%);
-                transform: scale(calc(1 + var(--depth) / 10));
+                top: calc(76% + (1 - var(--depth)) * -16%);
+                transform: scale(calc(1 + var(--depth) / 8));
+
+                display: flex;
+                justify-content: center;
+
+                img {
+                    &[src*='house'] {
+                        bottom: 15px;
+                    }
+                    &[src*='tree'] {
+                        bottom: 11px;
+                    }
+                }
 
                 &.cabs-container {
                     overflow: hidden;
@@ -253,18 +267,30 @@ span.cta {
                         fill: #3FE09C;
                         
                         position: absolute;
-                        left: -72.887px;
-                        transition: left 10s linear;
-                        &.drive {
-                            left: 100%;
-                        }
-
+                        
+                        transition: 400ms fill;
                         &.green {
                             fill: #83FB4C;
                         }
-
                         &.blue {
                             fill: #43BBF6;
+                        }
+                        &:not(.show-real-color) {
+                            fill: #3FE09C;
+                        }
+
+                        animation: infinite 10s drive linear;
+                        &:nth-child(1) { animation-delay: ((-10 / 7) * 6s); }
+                        &:nth-child(2) { animation-delay: ((-10 / 7) * 5s); }
+                        &:nth-child(3) { animation-delay: ((-10 / 7) * 4s); }
+                        &:nth-child(4) { animation-delay: ((-10 / 7) * 3s); }
+                        &:nth-child(5) { animation-delay: ((-10 / 7) * 2s); }
+                        &:nth-child(6) { animation-delay: ((-10 / 7)s); }
+                        &:nth-child(7) { animation-delay: 0s; }
+
+                        @keyframes drive {
+                            0% { left: -72.887px; }
+                            100% { left: 100%; }                            
                         }
                     }
                 }

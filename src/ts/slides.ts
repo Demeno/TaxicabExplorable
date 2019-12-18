@@ -34,6 +34,11 @@ namespace Taxidentville {
     }
 
     export class Intro extends Slide {
+        distanceCheckInterval: number;
+        latestMouseX: number;
+        latestMouseY: number;
+        cabs: Element[];
+        
         constructor(slideManager: SlideManager) {
             super("intro", slideManager);
 
@@ -41,12 +46,43 @@ namespace Taxidentville {
             continueButton.addEventListener("click", (ev) => {
                 this.finishSlide();
             });
+
+            this.cabs = Array.from(document.getElementsByClassName("intro-animation-container")[0].querySelectorAll(".cabs-container > svg"));
+        }
+
+        refreshCabsTrueColors() {
+            if (!this.latestMouseX || !this.latestMouseY) return;
+
+            this.cabs.forEach(cab => {
+                let rect = cab.getBoundingClientRect();
+                let x = rect.left + rect.width / 2;
+                let y = rect.top + rect.height / 2;
+                let distanceSquared = Math.pow(x - this.latestMouseX, 2) + Math.pow(y - this.latestMouseY, 2);
+                
+                if (distanceSquared < Math.pow(300, 2)) {
+                    cab.classList.add("show-real-color");
+                } else {
+                    cab.classList.remove("show-real-color");
+                }
+            })
+        }
+        
+        onMouseMove_bound: (ev: MouseEvent) => void = this.onMouseMove.bind(this);
+        onMouseMove(ev: MouseEvent) {
+            this.latestMouseX = ev.x;
+            this.latestMouseY = ev.y;
         }
 
         enter() {
+            document.addEventListener("mousemove", this.onMouseMove_bound);
+            this.distanceCheckInterval = setInterval(() => this.refreshCabsTrueColors(), 100);
+
             super.show();
         }    
         leave() {
+            document.removeEventListener("mousemove", this.onMouseMove_bound);
+            clearInterval(this.distanceCheckInterval);
+
             super.hide();
             setTimeout(() => {
                 super.collapse();
