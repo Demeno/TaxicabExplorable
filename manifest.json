@@ -1,0 +1,7 @@
+{
+    "name": "The Taxicab Problem Explorable",
+    "short_name": "Taxicab Problem",
+    "display":      "standalone",
+    "orientation":  "landscape",
+    "start_url": "index.html"
+}

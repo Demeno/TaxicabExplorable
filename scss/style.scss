@@ -220,7 +220,11 @@ span.cta {
             margin: auto 0;
             position: relative;
             overflow: hidden;
+            
             width: 100vw;
+            // 100% + 40px: for portrait mode to not look buggy in mobile Chrome
+            width: #{'max(100vw, 100% + 40px)'};
+
             flex: 1;
 
             > * {
@@ -249,7 +253,7 @@ span.cta {
 
                 img {
                     &[src*='house'] {
-                        bottom: 15px;
+                        bottom: 14px;
                     }
                     &[src*='tree'] {
                         bottom: 11px;
