@@ -263,9 +263,7 @@ span.cta {
                     svg {
                         width: 72.887px;
                         height: 36.896px;
-                        
-                        fill: #3FE09C;
-                        
+                                                
                         position: absolute;
                         
                         transition: 400ms fill;
@@ -276,7 +274,7 @@ span.cta {
                             fill: #43BBF6;
                         }
                         &:not(.show-real-color) {
-                            fill: #3FE09C;
+                            fill: #3e6655;
                         }
 
                         animation: infinite 10s drive linear;
@@ -285,7 +283,7 @@ span.cta {
                         &:nth-child(3) { animation-delay: ((-10 / 7) * 4s); }
                         &:nth-child(4) { animation-delay: ((-10 / 7) * 3s); }
                         &:nth-child(5) { animation-delay: ((-10 / 7) * 2s); }
-                        &:nth-child(6) { animation-delay: ((-10 / 7)s); }
+                        &:nth-child(6) { animation-delay: ((-10 / 7) * 1s); }
                         &:nth-child(7) { animation-delay: 0s; }
 
                         @keyframes drive {
@@ -295,10 +293,6 @@ span.cta {
                     }
                 }
             }
-        }
-
-        > button {
-            
         }
     }
 
