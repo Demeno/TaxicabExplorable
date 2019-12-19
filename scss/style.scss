@@ -254,6 +254,10 @@ span.cta {
                     &[src*='tree'] {
                         bottom: 11px;
                     }
+
+                    &[src*="house"], &[src*="tree"] {
+                        filter: saturate(0.5);
+                    }
                 }
 
                 &.cabs-container {
